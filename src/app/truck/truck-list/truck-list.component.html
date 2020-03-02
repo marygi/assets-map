@@ -4,7 +4,7 @@
 		*ngIf="truckList.length; else emptyTruckList">
 		<li class="list-group-item d-flex justify-content-between align-items-center"
 			*ngFor="let truck of truckList; let i = index">
-			{{ truck.name }}
+			<span class="list-group-item-truck" (click)="showTruckMarker(i)">{{ truck.name }}</span>
 			<button type="button" class="ml-2 mb-1 close" aria-hidden="true"
 				(click)="openDeleteModal(i)">
 				<span>&times;</span>

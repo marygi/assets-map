@@ -6,6 +6,7 @@ import { Truck } from '../model/truck';
 @Injectable()
 export class TruckService {
 	trucksChanged = new Subject<Truck[]>();
+	truckMarkerChanged = new Subject<number>();
 	truckNameChanged = new Subject<string>();
 
 	private truckList: Truck[] = [];

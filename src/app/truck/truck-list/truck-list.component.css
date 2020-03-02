@@ -2,3 +2,6 @@
 	height: 540px;
 	overflow-y: auto;
 }
+.list-group-item-truck {
+	cursor: pointer;
+}

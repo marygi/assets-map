@@ -39,6 +39,10 @@ export class TruckListComponent implements OnInit, OnDestroy {
 
 	}
 
+	showTruckMarker(index: number) {
+		this.truckService.truckMarkerChanged.next(index);
+	}
+
 	openDeleteModal(index: number) {
 		const modalRef = this.modalService.open(ModalTruckDeleteComponent);
 		modalRef.componentInstance.delIndex = index;

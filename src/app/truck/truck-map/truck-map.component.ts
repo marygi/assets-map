@@ -15,9 +15,10 @@ const LNG = 31.1828699;
 })
 export class TruckMapComponent implements OnInit, AfterViewInit, OnDestroy {
 	markerList: Truck[] = [];
-	subscription: Subscription;
-	gmap: google.maps.Map;
 	mapMarkers  = [];
+	subscription: Subscription;
+	subscription2: Subscription;
+	gmap: google.maps.Map;
 
 	@ViewChild('mapContainer', {static: false}) mapRef: ElementRef;
 
@@ -37,6 +38,14 @@ export class TruckMapComponent implements OnInit, AfterViewInit, OnDestroy {
 					this.markerList = trucks;
 					this.deleteMarkers();
 					this.addMarkers();
+				}
+			);
+
+		this.subscription2 = this.truckService.truckMarkerChanged
+			.subscribe(
+				(index: number) => {
+					const truck = this.markerList[index];
+					this.gmap.setCenter({ lat: parseFloat(truck.lat), lng: parseFloat(truck.lng)});
 				}
 			);
 	}
