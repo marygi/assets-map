@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { TruckService } from '../../shared/service/truck.service';
@@ -13,7 +13,7 @@ const LNG = 31.1828699;
 	templateUrl: './truck-map.component.html',
 	styleUrls: ['./truck-map.component.css']
 })
-export class TruckMapComponent implements OnInit, AfterViewInit {
+export class TruckMapComponent implements OnInit, AfterViewInit, OnDestroy {
 	markerList: Truck[] = [];
 	subscription: Subscription;
 	gmap: google.maps.Map;
@@ -75,6 +75,10 @@ export class TruckMapComponent implements OnInit, AfterViewInit {
 		for (let i = 0; i < this.mapMarkers.length; i++) {
 			this.mapMarkers[i].setMap(null);
 		}
+	}
+
+	ngOnDestroy() {
+		this.subscription.unsubscribe();
 	}
 
 }
