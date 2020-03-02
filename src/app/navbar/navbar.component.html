@@ -2,8 +2,9 @@
 	<nav class="navbar navbar-light bg-light">
 		<a class="navbar-brand" href="#">Assets Map</a>
 		
-		<div class="form-inline">
-			<input class="form-control mr-sm-2" type="search" placeholder="Search assets..." aria-label="Search assets">
+		<div class="form-inline" [formGroup]="myGroup">
+			<input class="form-control mr-sm-2" type="search" placeholder="Search assets..."
+				formControlName="filterTruckControl">
 			<button class="btn btn-success my-2 my-sm-0" type="button" (click)="openNewTruckModal()">Add asset</button>
 		</div>
 	</nav>

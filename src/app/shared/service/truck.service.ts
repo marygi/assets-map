@@ -6,6 +6,7 @@ import { Truck } from '../model/truck';
 @Injectable()
 export class TruckService {
 	trucksChanged = new Subject<Truck[]>();
+	truckNameChanged = new Subject<string>();
 
 	private truckList: Truck[] = [];
 
@@ -30,5 +31,11 @@ export class TruckService {
 	deleteTruck(index: number) {
 		this.truckList.splice(index, 1);
 		this.trucksChanged.next(this.truckList.slice());
+	}
+
+	filterTruckList(name: string) {
+		const filterValue = name.toLowerCase();
+		console.log(this.truckList.filter(truck => truck.name.toLowerCase().indexOf(filterValue) === 0));
+		return this.truckList.filter(truck => truck.name.toLowerCase().indexOf(filterValue) === 0);
 	}
 }

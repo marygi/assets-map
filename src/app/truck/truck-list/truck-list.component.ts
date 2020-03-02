@@ -14,6 +14,7 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 export class TruckListComponent implements OnInit, OnDestroy {
 	truckList: Truck[] = [];
 	subscription: Subscription;
+	subscription2: Subscription;
 
 	constructor(private truckService: TruckService,
 				private modalService: NgbModal) { }
@@ -28,6 +29,14 @@ export class TruckListComponent implements OnInit, OnDestroy {
 				}
 			);
 
+		this.subscription2 = this.truckService.truckNameChanged
+			.subscribe(
+				(name: string) => {
+					this.truckList = this.truckService.filterTruckList(name);
+
+				}
+			);
+
 	}
 
 	openDeleteModal(index: number) {
@@ -37,6 +46,7 @@ export class TruckListComponent implements OnInit, OnDestroy {
 
 	ngOnDestroy() {
 		this.subscription.unsubscribe();
+		this.subscription2.unsubscribe();
 	}
 
 }
