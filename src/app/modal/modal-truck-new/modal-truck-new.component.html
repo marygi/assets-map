@@ -40,6 +40,6 @@
 	</form>
 </div>
 <div class="modal-footer">
-	<button type="button" class="btn btn-warning" data-dismiss="modal">Cancel</button>
+	<button type="button" class="btn btn-warning" (click)="modal.dismiss()">Cancel</button>
 	<button type="button" ngbAutofocus class="btn btn-primary" (click)="onSubmit()" [disabled]="!truckForm.valid">Add</button>
 </div>
