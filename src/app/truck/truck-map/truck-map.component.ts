@@ -66,6 +66,7 @@ export class TruckMapComponent implements OnInit, AfterViewInit, OnDestroy {
 			});
 
 			marker.setMap(this.gmap);
+			this.gmap.setCenter(marker.getPosition());
 			this.mapMarkers.push(marker);
 
 		});
