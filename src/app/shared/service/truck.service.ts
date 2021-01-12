@@ -36,7 +36,6 @@ export class TruckService {
 
 	filterTruckList(name: string) {
 		const filterValue = name.toLowerCase();
-		console.log(this.truckList.filter(truck => truck.name.toLowerCase().indexOf(filterValue) === 0));
 		return this.truckList.filter(truck => truck.name.toLowerCase().indexOf(filterValue) === 0);
 	}
 }
